@@ -10,6 +10,8 @@
 		571908062229DE1700087812 /* NetworkSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 571907FC2229DE1700087812 /* NetworkSession.framework */; };
 		5719080B2229DE1700087812 /* NetworkSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5719080A2229DE1700087812 /* NetworkSessionTests.swift */; };
 		5719080D2229DE1700087812 /* NetworkSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 571907FF2229DE1700087812 /* NetworkSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		571908182229DE2A00087812 /* FormDataSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571908162229DE2A00087812 /* FormDataSerialization.swift */; };
+		571908192229DE2A00087812 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571908172229DE2A00087812 /* NetworkSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		571908052229DE1700087812 /* NetworkSessionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkSessionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5719080A2229DE1700087812 /* NetworkSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionTests.swift; sourceTree = "<group>"; };
 		5719080C2229DE1700087812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		571908162229DE2A00087812 /* FormDataSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataSerialization.swift; sourceTree = "<group>"; };
+		571908172229DE2A00087812 /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				571907FF2229DE1700087812 /* NetworkSession.h */,
+				571908162229DE2A00087812 /* FormDataSerialization.swift */,
+				571908172229DE2A00087812 /* NetworkSession.swift */,
 				571908002229DE1700087812 /* Info.plist */,
 			);
 			path = NetworkSession;
@@ -148,6 +154,7 @@
 				TargetAttributes = {
 					571907FB2229DE1700087812 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 					571908042229DE1700087812 = {
 						CreatedOnToolsVersion = 10.2;
@@ -194,6 +201,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				571908182229DE2A00087812 /* FormDataSerialization.swift in Sources */,
+				571908192229DE2A00087812 /* NetworkSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +350,7 @@
 		571908112229DE1700087812 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +368,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.collectiveidea.NetworkSession;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +377,7 @@
 		571908122229DE1700087812 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +403,7 @@
 		571908142229DE1700087812 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MXD5J8GME;
 				INFOPLIST_FILE = NetworkSessionTests/Info.plist;
@@ -409,6 +422,7 @@
 		571908152229DE1700087812 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MXD5J8GME;
 				INFOPLIST_FILE = NetworkSessionTests/Info.plist;
