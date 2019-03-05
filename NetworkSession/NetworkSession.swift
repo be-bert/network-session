@@ -58,114 +58,31 @@ extension URLSession: NetworkSession {
     
     public func backgroundPost(to path: String, params: [String : String]?, headers: [String : String]?, body: Data) throws {
         
+        var urlComponents: URLComponents!
+        do {
+            urlComponents = try configureURLComponents(path: path, params: params)
+        } catch {
+            throw error
+        }
         
-        var request = URLRequest(url: URL(string: path)!)
-        request.httpMethod = "POST"
-        let boundary = "Boundary-\(UUID().uuidString)"
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        var request: URLRequest!
+        do {
+            request = try configureRequest(urlComponents: urlComponents)
+        } catch {
+           throw error
+        }
         
         configureHeaders(headers: headers, request: &request)
         
-        let filename = "hello.jpg"
-//
-//        let boundaryPrefix = "--\(boundary)\r\n"
-//
-        let mimeType = "image/jpg"
-//
-//        var bodyString = ""
-//
-//        if let headers = headers {
-//            for (key, value) in headers {
-//                bodyString += boundaryPrefix
-//                bodyString += "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n"
-//                bodyString += "\(value)\r\n"
-//            }
-//        }
-//
-//
-//        bodyString += boundaryPrefix
-//        bodyString += "Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n"
-//        bodyString += "Content-Type: \(mimeType)\r\n\r\n"
-//        let image = UIImage(data: body)
-//        let jpgData = image?.jpegData(compressionQuality: 80)?.base64EncodedData()
-//
-//        bodyString += String(data: jpgData!, encoding: .utf8)!
-//        bodyString += "\r\n"
-//        bodyString += "--".appending(boundary.appending("--"))
-        
-//        let data = bodyString.data(using: .utf8)
-        
-        let data = createBody(parameters: [:], boundary: boundary, data: body, mimeType: mimeType, filename: filename)
-        
-        let tempDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.dreamhousedesign.DreamHouseDesign")//FileManager.default.temporaryDirectory
-        let localURL = tempDir!.appendingPathComponent("throwaway2")
-        try! data.write(to: localURL)
+        let tempDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.dreamhousedesign.DreamHouseDesign")
+        let localURL = tempDir!.appendingPathComponent("throwaway")
+        try! body.write(to: localURL)
 
-        
-//        var bodyString = ""
-//
-//        var filePathKey = "file"
-//
-//        let boundary = "Boundary-\(UUID().uuidString)"
-//
-//        if let headers = headers {
-//            for (key, value) in headers {
-//                bodyString += "--\(boundary)\r\n"
-//                bodyString += "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n"
-//                bodyString += "\(value)\r\n"
-//            }
-//        }
-//
-//        var tempDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.dreamhousedesign.DreamHouseDesign") //FileManager.default.temporaryDirectory
-//        let localURL = tempDir!.appendingPathComponent("throwaway")
-//        try! body.write(to: localURL)
-//
-//        let urls = [localURL]
-//
-//        for url in urls {
-//            let filename = url.lastPathComponent
-//            let data = try Data(contentsOf: url)
-//            let mimetype = mimeType(for: path)
-//
-//            bodyString += "--\(boundary)\r\n"
-//            bodyString += "Content-Disposition: form-data; name=\"\(filePathKey)\"; filename=\"\(filename)\"\r\n"
-//            bodyString += "Content-Type: \(mimetype)\r\n\r\n"
-//            bodyString += data.base64EncodedString()  //UIImage(data: body) //String(decoding: data, as: UTF8.self)
-//            bodyString += "\r\n"
-//        }
-//
-//        bodyString += "--\(boundary)--\r\n"
-//
-//        let data = bodyString.data(using: .utf8)!
-//
-//        var request = URLRequest(url: URL(string: path)!)
-//        request.httpMethod = "POST"
-//        request.httpBody = data
-     /////////////////////////////////////
-//
-//        var urlComponents: URLComponents!
-//        do {
-//            urlComponents = try configureURLComponents(path: path, params: params)
-//        } catch {
-//            throw error
-//        }
-//
-//        var request: URLRequest!
-//        do {
-//            request = try configureRequest(urlComponents: urlComponents)
-//        } catch {
-//            throw error
-//        }
-//
-//        configureHeaders(headers: headers, request: &request)
-//
-//        let tempDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.dreamhousedesign.DreamHouseDesign")//FileManager.default.temporaryDirectory
-//        let localURL = tempDir!.appendingPathComponent("throwaway2")
-//        try! body.write(to: localURL)
-//
         let task = uploadTask(with: request, fromFile: localURL)
         task.resume()
     }
+    
+    // MARK: private methods
     
     func createBody(parameters: [String: String],
                     boundary: String,
@@ -237,7 +154,7 @@ extension URLSession: NetworkSession {
     func configureHeaders(headers: [String : String]?, request: inout URLRequest) {
         if let headers = headers {
             for (key, value) in headers {
-                request.addValue(value, forHTTPHeaderField: key)
+                request.setValue(value, forHTTPHeaderField: key)
             }
         }
     }

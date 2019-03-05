@@ -12,6 +12,7 @@
 		5719080D2229DE1700087812 /* NetworkSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 571907FF2229DE1700087812 /* NetworkSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		571908182229DE2A00087812 /* FormDataSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571908162229DE2A00087812 /* FormDataSerialization.swift */; };
 		571908192229DE2A00087812 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571908172229DE2A00087812 /* NetworkSession.swift */; };
+		57B52B8D222EF2E200A66DB1 /* MultiPartFormDataSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B52B8C222EF2E200A66DB1 /* MultiPartFormDataSerialization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		5719080C2229DE1700087812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		571908162229DE2A00087812 /* FormDataSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataSerialization.swift; sourceTree = "<group>"; };
 		571908172229DE2A00087812 /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		57B52B8C222EF2E200A66DB1 /* MultiPartFormDataSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataSerialization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				571907FF2229DE1700087812 /* NetworkSession.h */,
 				571908162229DE2A00087812 /* FormDataSerialization.swift */,
+				57B52B8C222EF2E200A66DB1 /* MultiPartFormDataSerialization.swift */,
 				571908172229DE2A00087812 /* NetworkSession.swift */,
 				571908002229DE1700087812 /* Info.plist */,
 			);
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				571908182229DE2A00087812 /* FormDataSerialization.swift in Sources */,
+				57B52B8D222EF2E200A66DB1 /* MultiPartFormDataSerialization.swift in Sources */,
 				571908192229DE2A00087812 /* NetworkSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
