@@ -75,7 +75,7 @@ extension URLSession: NetworkSession {
         configureHeaders(headers: headers, request: &request)
         
         let tempDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.dreamhousedesign.DreamHouseDesign")
-        let localURL = tempDir!.appendingPathComponent("throwaway")
+        let localURL = tempDir!.appendingPathComponent(UUID().uuidString)
         try! body.write(to: localURL)
 
         let task = uploadTask(with: request, fromFile: localURL)
@@ -163,8 +163,10 @@ extension URLSession: NetworkSession {
 
 
 extension NSMutableData {
+    
     func appendString(_ string: String) {
         let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
         append(data!)
     }
+    
 }
