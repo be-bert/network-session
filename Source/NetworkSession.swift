@@ -1,6 +1,5 @@
 
 import Foundation
-import MobileCoreServices
 
 public protocol NetworkSession {
     func post(to path: String, headers: [String: String]?, data: Data?, completion: @escaping (Result<Data, Error>) -> Void)
