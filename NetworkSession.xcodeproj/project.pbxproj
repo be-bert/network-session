@@ -13,7 +13,7 @@
 		571908182229DE2A00087812 /* FormDataSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571908162229DE2A00087812 /* FormDataSerialization.swift */; };
 		571908192229DE2A00087812 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571908172229DE2A00087812 /* NetworkSession.swift */; };
 		57B52B8D222EF2E200A66DB1 /* MultiPartFormDataSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B52B8C222EF2E200A66DB1 /* MultiPartFormDataSerialization.swift */; };
-		57F7F3D8226F782600748229 /* NetworkSession_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F7F3CF226F782500748229 /* NetworkSession_macOS.framework */; };
+		57F7F3D8226F782600748229 /* NetworkSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F7F3CF226F782500748229 /* NetworkSession.framework */; };
 		57F7F3DD226F782600748229 /* NetworkSession_macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F7F3DC226F782600748229 /* NetworkSession_macOSTests.swift */; };
 		57F7F3DF226F782600748229 /* NetworkSession_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F7F3D1226F782500748229 /* NetworkSession_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		57F7F3E7226F788100748229 /* FormDataSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571908162229DE2A00087812 /* FormDataSerialization.swift */; };
@@ -48,7 +48,7 @@
 		571908162229DE2A00087812 /* FormDataSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataSerialization.swift; sourceTree = "<group>"; };
 		571908172229DE2A00087812 /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 		57B52B8C222EF2E200A66DB1 /* MultiPartFormDataSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataSerialization.swift; sourceTree = "<group>"; };
-		57F7F3CF226F782500748229 /* NetworkSession_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkSession_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57F7F3CF226F782500748229 /* NetworkSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F7F3D1226F782500748229 /* NetworkSession_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkSession_macOS.h; sourceTree = "<group>"; };
 		57F7F3D2226F782500748229 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57F7F3D7226F782500748229 /* NetworkSession-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NetworkSession-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57F7F3D8226F782600748229 /* NetworkSession_macOS.framework in Frameworks */,
+				57F7F3D8226F782600748229 /* NetworkSession.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +107,7 @@
 			children = (
 				571907FC2229DE1700087812 /* NetworkSession.framework */,
 				571908052229DE1700087812 /* NetworkSessionTests.xctest */,
-				57F7F3CF226F782500748229 /* NetworkSession_macOS.framework */,
+				57F7F3CF226F782500748229 /* NetworkSession.framework */,
 				57F7F3D7226F782500748229 /* NetworkSession-macOSTests.xctest */,
 			);
 			name = Products;
@@ -232,7 +232,7 @@
 			);
 			name = "NetworkSession-macOS";
 			productName = "NetworkSession-macOS";
-			productReference = 57F7F3CF226F782500748229 /* NetworkSession_macOS.framework */;
+			productReference = 57F7F3CF226F782500748229 /* NetworkSession.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		57F7F3D6226F782500748229 /* NetworkSession-macOSTests */ = {
@@ -618,7 +618,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.collectiveidea.NetworkSession-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = NetworkSession;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -646,7 +646,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.collectiveidea.NetworkSession-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = NetworkSession;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
