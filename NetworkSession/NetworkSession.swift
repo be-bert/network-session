@@ -2,11 +2,6 @@
 import Foundation
 import MobileCoreServices
 
-public enum Result<Value, Error> {
-    case success(Value)
-    case failure(Error)
-}
-
 public protocol NetworkSession {
     func post(to path: String, headers: [String: String]?, data: Data?, completion: @escaping (Result<Data, Error>) -> Void)
     func backgroundPost(to path: String, headers: [String: String]?, fileLocation: URL) throws
