@@ -12,6 +12,7 @@ public enum URLError: Error {
     case incorrectPath(_ path: String)
     case noUrl
     case unacceptableStatusCode(_ code: Int)
+    case responseWasNotHTTP(response: URLResponse?)
     
 }
 
@@ -41,6 +42,8 @@ extension URLSession: NetworkSession {
                     } else if let error = error {
                         completion(.failure(error), response)
                     }
+                } else {
+                    completion(.failure(URLError.responseWasNotHTTP(response: response)), nil)
                 }
             }
         }
