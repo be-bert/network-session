@@ -2,7 +2,7 @@
 import Foundation
 
 public protocol NetworkSession {
-    func post(to path: String, headers: [String: String]?, data: Data?, completion: @escaping (Result<Data, Error>) -> Void)
+    func post(to path: String, headers: [String: String]?, data: Data?, completion: @escaping (Result<Data, Error>, HTTPURLResponse?) -> Void)
     func backgroundPost(to path: String, headers: [String: String]?, fileLocation: URL) throws
 }
 
@@ -17,9 +17,10 @@ public enum URLError: Error {
 
 extension URLSession: NetworkSession {
     
-    public func post(to path: String, headers: [String : String]?, data: Data?, completion: @escaping (Result<Data, Error>) -> Void) {
+    public func post(to path: String, headers: [String : String]?, data: Data?, completion: @escaping (Result<Data, Error>, HTTPURLResponse?) -> Void) {
+        
         guard let url = URL(string: path) else {
-            completion(Result.failure(URLError.malformedPath(path)))
+            completion(Result.failure(URLError.malformedPath(path)), nil)
             return
         }
         
@@ -32,18 +33,17 @@ extension URLSession: NetworkSession {
         
         let task = uploadTask(with: request, from: nil) { (data, response, error) in
             DispatchQueue.main.async {
-                if let response = response as? HTTPURLResponse,
-                    (200...299).contains(response.statusCode) == false {
-                    completion(.failure(URLError.unacceptableStatusCode(response.statusCode)))
-                }
-                else if let data = data {
-                    completion(.success(data))
-                } else if let error = error {
-                    completion(.failure(error))
+                if let response = response as? HTTPURLResponse {
+                    if (200...299).contains(response.statusCode) == false {
+                        completion(.failure(URLError.unacceptableStatusCode(response.statusCode)), response)
+                    } else if let data = data {
+                        completion(.success(data), response)
+                    } else if let error = error {
+                        completion(.failure(error), response)
+                    }
                 }
             }
         }
-        
         task.resume()
     }
     
